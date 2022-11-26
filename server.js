@@ -27,4 +27,10 @@ app.get('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
 	res.setHeader('Content-Type', 'application/json'); 
 	res.status(200).send(roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls))); });
 
+app.post('/app/roll/', (req, res) =>{
+    const sides = parseInt(req.body.sides);
+    const dice = parseInt(req.body.dice);
+    const rolls = parseInt(req.body.rolls);
+    res.send(roll(sides, dice, rolls));         })
+
 app.listen(port);
