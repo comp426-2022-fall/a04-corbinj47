@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This assignment will help you stand up a web API using Express and the module that you produced for a03",
   "main": "server.js",
+  "type" : "module",
   "scripts": {
     "test": "node server.js --port=5555"
   },
