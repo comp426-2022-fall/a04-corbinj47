@@ -9,8 +9,6 @@ const app = express();
 app.use(express.urlencoded({extended:true})); 
 const port = arg.port || 5000;
 
-//undedined 
-app.get('*', (req,res) => { res.status(404).send('404 NOT FOUND').end(); });
 
 //status 200
 app.get('/app/', (req,res)=> {res.status(200).send('200 OK'); });
@@ -39,5 +37,8 @@ app.get('/app/roll/:sides/:dice/', (req,res) => {
 app.get('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
 	res.setHeader('Content-Type', 'application/json'); 
 	res.status(200).send(roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls))); });
+
+//undedined
+app.get('*', (req,res) => { res.status(404).send('404 NOT FOUND').end(); });
 
 app.listen(port);
