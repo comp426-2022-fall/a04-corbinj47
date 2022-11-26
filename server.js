@@ -19,6 +19,12 @@ app.get('/app/', (req,res)=> {res.status(200).send('200 OK'); });
 app.get('/app/roll/', (req,res) => {res.setHeader('Content-Type', 'application/json');
 	res.status(200).send(roll(6,2,1)); });
 
+app.post('/app/roll/', (req, res) =>{
+    const sides = parseInt(req.body.sides);
+    const dice = parseInt(req.body.dice);
+    const rolls = parseInt(req.body.rolls);
+    res.send(roll(sides, dice, rolls)); });
+
 //sides endpoint
 app.get('/app/roll/:sides/', (req, res) => { 
 	res.setHeader('Content-Type','application/json');
@@ -33,12 +39,5 @@ app.get('/app/roll/:sides/:dice/', (req,res) => {
 app.get('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
 	res.setHeader('Content-Type', 'application/json'); 
 	res.status(200).send(roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls))); });
-
-//posting response
-app.post('/app/roll/', (req, res) =>{
-    const sides = parseInt(req.body.sides);
-    const dice = parseInt(req.body.dice);
-    const rolls = parseInt(req.body.rolls);
-    res.send(roll(sides, dice, rolls));         })
 
 app.listen(port);
